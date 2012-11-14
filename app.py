@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import sys
 import logging
 import flask
 
@@ -13,5 +14,6 @@ def create_app():
 
 if __name__ == '__main__':
     logging.basicConfig()
+    port = int(sys.argv[1]) if len(sys.argv) > 1 else 5000
     app = create_app()
-    app.run()
+    app.run(port=port)
