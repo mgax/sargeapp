@@ -7,11 +7,15 @@ import flask
 
 
 def create_app():
-    import pages
     app = flask.Flask(__name__)
+
+    @app.route('/')
+    def home():
+        return os.environ.get('MESSAGE', "hello web!")
+
     if os.environ.get('DEBUG'):
         app.debug = True
-    app.register_blueprint(pages.pages)
+
     return app
 
 
