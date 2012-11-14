@@ -1,8 +1,11 @@
+import os
 import subprocess
 from StringIO import StringIO
 from fabric.api import *
 
-env['target_directory'] = '/var/local/sargeapp'
+_host, _directory = os.environ['TARGET'].split(':')
+env['hosts'] = [_host]
+env['target_directory'] = _directory
 env['use_ssh_config'] = True
 
 
