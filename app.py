@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import sys
+import os
 import logging
 import flask
 
@@ -8,6 +9,8 @@ import flask
 def create_app():
     import pages
     app = flask.Flask(__name__)
+    if os.environ.get('DEBUG'):
+        app.debug = True
     app.register_blueprint(pages.pages)
     return app
 
